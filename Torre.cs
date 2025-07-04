@@ -35,6 +35,8 @@ namespace TorresDeHanoi
             _groupBox.Controls.Clear();
         }
 
+        public Button? ObtenerUltimoDisco() => Discos.Count > 0 ? Discos.Peek() : null;
+
         public bool EsElUltimoDisco(Button disco) => disco.Name == Discos.Peek().Name;
 
         public void Bloquear() => _groupBox.Enabled = false;

@@ -69,9 +69,10 @@ namespace TorresDeHanoi
                 Width = groupBoxTorre1.Width + 1
             };
 
-            _torre1.AgregarDisco(inicial);
-            _torre2.AgregarDisco(inicial);
-            _torre3.AgregarDisco(inicial);
+            // Se agregan discos iniciales para que en los peek no de error al realizar la primera comprobación
+            _torre1.Discos.Push(inicial);
+            _torre2.Discos.Push(inicial);
+            _torre3.Discos.Push(inicial);
 
             for (int i = 0; i < cantidadDiscos; i++)
             {
@@ -98,19 +99,28 @@ namespace TorresDeHanoi
 
         private void trackBarDiscos_Scroll(object sender, EventArgs e)
         {
+            _discoSeleccionado = null;
+            _cantidadMovimientos = 0;
+
             _torre1.LimpiarDiscos();
             _torre2.LimpiarDiscos();
             _torre3.LimpiarDiscos();
 
+            _torre1.Desbloquear();
+            _torre2.Desbloquear();
+            _torre3.Desbloquear();
+
             labelCantidadDiscos.Text = trackBarDiscos.Value.ToString();
-            labelMejor.Text = $"Mejor movimiento: {Math.Pow(2, trackBarDiscos.Value) - 1}";
+            labelMejor.Text = $"Mejor: {Math.Pow(2, trackBarDiscos.Value) - 1}";
             labelMovimientos.Text = "Movimientos: 0";
+            labelGanador.Visible = false;
 
             CrearDiscos(trackBarDiscos.Value);
         }
 
         private void buttonReiniciar_Click(object sender, EventArgs e)
         {
+            _discoSeleccionado = null;
             _cantidadMovimientos = 0;
 
             _torre1.LimpiarDiscos();
@@ -128,7 +138,6 @@ namespace TorresDeHanoi
             labelGanador.Visible = false;
 
             CrearDiscos(trackBarDiscos.Value);
-            _discoSeleccionado = null;
         }
 
         private string ObtenerTorreOrigen()
@@ -138,19 +147,19 @@ namespace TorresDeHanoi
                 bool existeTorre1 = _torre1.Discos.Any(d => d.Name == _discoSeleccionado.Name);
                 if (existeTorre1)
                 {
-                    return "torre1";
+                    return "groupBoxTorre1";
                 }
 
                 bool existeTorre2 = _torre2.Discos.Any(d => d.Name == _discoSeleccionado.Name);
                 if (existeTorre2)
                 {
-                    return "torre2";
+                    return "groupBoxTorre2";
                 }
 
                 bool existeTorre3 = _torre3.Discos.Any(d => d.Name == _discoSeleccionado.Name);
                 if (existeTorre3)
                 {
-                    return "torre3";
+                    return "groupBoxTorre3";
                 }
             }
 
@@ -161,17 +170,17 @@ namespace TorresDeHanoi
         {
             if (torreDestino.Name == "groupBoxTorre1")
             {
-                if (disco.Width > _torre1.Discos.Peek().Width)
+                if (disco.Width > _torre1.ObtenerUltimoDisco()?.Width)
                     return false;
             }
             else if (torreDestino.Name == "groupBoxTorre2")
             {
-                if (disco.Width > _torre2.Discos.Peek().Width)
+                if (disco.Width > _torre2.ObtenerUltimoDisco()?.Width)
                     return false;
             }
             else if (torreDestino.Name == "groupBoxTorre3")
             {
-                if (disco.Width > _torre3.Discos.Peek().Width)
+                if (disco.Width > _torre3.ObtenerUltimoDisco()?.Width)
                     return false;
             }
             return true;
@@ -224,13 +233,13 @@ namespace TorresDeHanoi
                         {
                             switch (nombreTorreOrigen)
                             {
-                                case "torre1":
+                                case "groupBoxTorre1":
                                     _torre1.EliminarUltimoDisco();
                                     break;
-                                case "torre2":
+                                case "groupBoxTorre2":
                                     _torre2.EliminarUltimoDisco();
                                     break;
-                                case "torre3":
+                                case "groupBoxTorre3":
                                     _torre3.EliminarUltimoDisco();
                                     break;
                             }

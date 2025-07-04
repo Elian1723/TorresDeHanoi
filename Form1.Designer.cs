@@ -36,20 +36,21 @@
             labelMejor = new Label();
             groupBoxTorre1 = new GroupBox();
             groupBoxTorre2 = new GroupBox();
-            groupBoxTorre3 = new GroupBox();
             labelGanador = new Label();
+            groupBoxTorre3 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)trackBarDiscos).BeginInit();
             SuspendLayout();
             // 
             // buttonReiniciar
             // 
+            buttonReiniciar.BackColor = SystemColors.InactiveCaption;
             buttonReiniciar.Cursor = Cursors.Hand;
             buttonReiniciar.Location = new Point(12, 12);
             buttonReiniciar.Name = "buttonReiniciar";
             buttonReiniciar.Size = new Size(115, 35);
             buttonReiniciar.TabIndex = 0;
             buttonReiniciar.Text = "Reiniciar";
-            buttonReiniciar.UseVisualStyleBackColor = true;
+            buttonReiniciar.UseVisualStyleBackColor = false;
             buttonReiniciar.Click += buttonReiniciar_Click;
             // 
             // trackBarDiscos
@@ -106,7 +107,6 @@
             groupBoxTorre1.Size = new Size(375, 500);
             groupBoxTorre1.TabIndex = 2;
             groupBoxTorre1.TabStop = false;
-            groupBoxTorre1.Text = "Torre 1";
             // 
             // groupBoxTorre2
             // 
@@ -118,19 +118,6 @@
             groupBoxTorre2.Size = new Size(375, 500);
             groupBoxTorre2.TabIndex = 3;
             groupBoxTorre2.TabStop = false;
-            groupBoxTorre2.Text = "Torre 2";
-            // 
-            // groupBoxTorre3
-            // 
-            groupBoxTorre3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            groupBoxTorre3.BackgroundImage = Properties.Resources.Recurso_1_2x;
-            groupBoxTorre3.BackgroundImageLayout = ImageLayout.Stretch;
-            groupBoxTorre3.Location = new Point(774, 94);
-            groupBoxTorre3.Name = "groupBoxTorre3";
-            groupBoxTorre3.Size = new Size(375, 500);
-            groupBoxTorre3.TabIndex = 4;
-            groupBoxTorre3.TabStop = false;
-            groupBoxTorre3.Text = "Torre 3";
             // 
             // labelGanador
             // 
@@ -144,13 +131,24 @@
             labelGanador.Text = "¡Ganaste, felicidades!";
             labelGanador.Visible = false;
             // 
+            // groupBoxTorre3
+            // 
+            groupBoxTorre3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBoxTorre3.BackgroundImage = Properties.Resources.Recurso_1_2x;
+            groupBoxTorre3.BackgroundImageLayout = ImageLayout.Stretch;
+            groupBoxTorre3.Location = new Point(774, 94);
+            groupBoxTorre3.Name = "groupBoxTorre3";
+            groupBoxTorre3.Size = new Size(375, 500);
+            groupBoxTorre3.TabIndex = 4;
+            groupBoxTorre3.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1161, 606);
-            Controls.Add(labelGanador);
             Controls.Add(groupBoxTorre3);
+            Controls.Add(labelGanador);
             Controls.Add(groupBoxTorre2);
             Controls.Add(groupBoxTorre1);
             Controls.Add(labelMejor);
@@ -180,7 +178,7 @@
         private Label labelMejor;
         private GroupBox groupBoxTorre1;
         private GroupBox groupBoxTorre2;
-        private GroupBox groupBoxTorre3;
         private Label labelGanador;
+        private GroupBox groupBoxTorre3;
     }
 }
