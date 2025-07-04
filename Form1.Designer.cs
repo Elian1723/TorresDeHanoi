@@ -37,6 +37,7 @@
             groupBoxTorre1 = new GroupBox();
             groupBoxTorre2 = new GroupBox();
             groupBoxTorre3 = new GroupBox();
+            labelGanador = new Label();
             ((System.ComponentModel.ISupportInitialize)trackBarDiscos).BeginInit();
             SuspendLayout();
             // 
@@ -130,11 +131,24 @@
             groupBoxTorre3.TabStop = false;
             groupBoxTorre3.Text = "Torre 3";
             // 
+            // labelGanador
+            // 
+            labelGanador.AutoSize = true;
+            labelGanador.Font = new Font("Arial", 20.25F, FontStyle.Bold);
+            labelGanador.ForeColor = Color.Red;
+            labelGanador.Location = new Point(12, 52);
+            labelGanador.Name = "labelGanador";
+            labelGanador.Size = new Size(295, 32);
+            labelGanador.TabIndex = 5;
+            labelGanador.Text = "¡Ganaste, felicidades!";
+            labelGanador.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1161, 606);
+            Controls.Add(labelGanador);
             Controls.Add(groupBoxTorre3);
             Controls.Add(groupBoxTorre2);
             Controls.Add(groupBoxTorre1);
@@ -148,6 +162,7 @@
             Margin = new Padding(4);
             MinimumSize = new Size(1177, 645);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Torres de Hanoi";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)trackBarDiscos).EndInit();
@@ -165,5 +180,6 @@
         private GroupBox groupBoxTorre1;
         private GroupBox groupBoxTorre2;
         private GroupBox groupBoxTorre3;
+        private Label labelGanador;
     }
 }
