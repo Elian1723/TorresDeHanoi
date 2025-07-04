@@ -98,6 +98,7 @@
             // groupBoxTorre1
             // 
             groupBoxTorre1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBoxTorre1.BackColor = SystemColors.Control;
             groupBoxTorre1.BackgroundImage = Properties.Resources.Recurso_1_2x;
             groupBoxTorre1.BackgroundImageLayout = ImageLayout.Stretch;
             groupBoxTorre1.Location = new Point(12, 94);

@@ -1,3 +1,5 @@
+using System.CodeDom;
+
 namespace TorresDeHanoi
 {
     public partial class Form1 : Form
@@ -115,9 +117,9 @@ namespace TorresDeHanoi
             _torre2.LimpiarDiscos();
             _torre3.LimpiarDiscos();
 
-            groupBoxTorre1.Enabled = true;
-            groupBoxTorre2.Enabled = true;
-            groupBoxTorre3.Enabled = true;
+            _torre1.Desbloquear();
+            _torre2.Desbloquear();
+            _torre3.Desbloquear();
 
             trackBarDiscos.Value = Convert.ToInt32(labelCantidadDiscos.Text);
 
@@ -136,19 +138,19 @@ namespace TorresDeHanoi
                 bool existeTorre1 = _torre1.Discos.Any(d => d.Name == _discoSeleccionado.Name);
                 if (existeTorre1)
                 {
-                    return "groupBoxTorre1";
+                    return "torre1";
                 }
 
                 bool existeTorre2 = _torre2.Discos.Any(d => d.Name == _discoSeleccionado.Name);
                 if (existeTorre2)
                 {
-                    return "groupBoxTorre2";
+                    return "torre2";
                 }
 
                 bool existeTorre3 = _torre3.Discos.Any(d => d.Name == _discoSeleccionado.Name);
                 if (existeTorre3)
                 {
-                    return "groupBoxTorre3";
+                    return "torre3";
                 }
             }
 
@@ -210,40 +212,43 @@ namespace TorresDeHanoi
         {
             if (sender is GroupBox torreDestino)
             {
-                string nombreTorreOrigen = ObtenerTorreOrigen();
-
                 if (_discoSeleccionado != null)
                 {
-                    bool esDiscoMenor = ComprobarDiscoMenor(_discoSeleccionado, torreDestino);
+                    string nombreTorreOrigen = ObtenerTorreOrigen();
 
-                    if (esDiscoMenor) // No se puede colocar un disco grande sobre uno pequeño
+                    if (_discoSeleccionado != null)
                     {
-                        switch (nombreTorreOrigen)
+                        bool esDiscoMenor = ComprobarDiscoMenor(_discoSeleccionado, torreDestino);
+
+                        if (esDiscoMenor) // No se puede colocar un disco grande sobre uno pequeño
                         {
-                            case "groupBoxTorre1":
-                                _torre1.EliminarUltimoDisco();
-                                break;
-                            case "groupBoxTorre2":
-                                _torre2.EliminarUltimoDisco();
-                                break;
-                            case "groupBoxTorre3":
-                                _torre3.EliminarUltimoDisco();
-                                break;
+                            switch (nombreTorreOrigen)
+                            {
+                                case "torre1":
+                                    _torre1.EliminarUltimoDisco();
+                                    break;
+                                case "torre2":
+                                    _torre2.EliminarUltimoDisco();
+                                    break;
+                                case "torre3":
+                                    _torre3.EliminarUltimoDisco();
+                                    break;
+                            }
+
+                            AgregarDisco(torreDestino, _discoSeleccionado);
+
+                            _discoSeleccionado = null;
+                            _cantidadMovimientos += torreDestino.Name == nombreTorreOrigen ? 0 : 1; // Si es la misma torre, no se cuenta el movimiento
                         }
-
-                        AgregarDisco(torreDestino, _discoSeleccionado);
-
-                        _discoSeleccionado = null;
-                        _cantidadMovimientos += torreDestino.Name == nombreTorreOrigen ? 0 : 1; // Si es la misma torre, no se cuenta el movimiento
+                        else
+                        {
+                            MessageBox.Show("No se puede colocar un disco más grande que el de abajo", "Posicionamiento incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("No se puede colocar un disco más grande que el de abajo", "Posicionamiento incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+
+                    ComprobarVictoria();
+                    labelMovimientos.Text = $"Movimientos: {_cantidadMovimientos}";
                 }
-
-                ComprobarVictoria();
-                labelMovimientos.Text = $"Movimientos: {_cantidadMovimientos}";
             }
         }
 
@@ -252,9 +257,9 @@ namespace TorresDeHanoi
             if (_torre3.Discos.Count - 1 == trackBarDiscos.Value)
             {
                 labelGanador.Visible = true;
-                groupBoxTorre1.Enabled = false;
-                groupBoxTorre2.Enabled = false;
-                groupBoxTorre3.Enabled = false;
+                _torre1.Bloquear();
+                _torre2.Bloquear();
+                _torre3.Bloquear();
                 buttonReiniciar.Focus();
             }
         }

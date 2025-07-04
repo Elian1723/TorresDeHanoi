@@ -36,5 +36,9 @@ namespace TorresDeHanoi
         }
 
         public bool EsElUltimoDisco(Button disco) => disco.Name == Discos.Peek().Name;
+
+        public void Bloquear() => _groupBox.Enabled = false;
+
+        public void Desbloquear() => _groupBox.Enabled = true;
     }
 }
