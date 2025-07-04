@@ -29,135 +29,141 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            button1 = new Button();
-            trackBar1 = new TrackBar();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
-            groupBox3 = new GroupBox();
-            ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
+            buttonReiniciar = new Button();
+            trackBarDiscos = new TrackBar();
+            labelCantidadDiscos = new Label();
+            labelMovimientos = new Label();
+            labelMejor = new Label();
+            groupBoxTorre1 = new GroupBox();
+            groupBoxTorre2 = new GroupBox();
+            groupBoxTorre3 = new GroupBox();
+            ((System.ComponentModel.ISupportInitialize)trackBarDiscos).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // buttonReiniciar
             // 
-            button1.Cursor = Cursors.Hand;
-            button1.Location = new Point(12, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(115, 35);
-            button1.TabIndex = 0;
-            button1.Text = "Reiniciar";
-            button1.UseVisualStyleBackColor = true;
+            buttonReiniciar.Cursor = Cursors.Hand;
+            buttonReiniciar.Location = new Point(12, 12);
+            buttonReiniciar.Name = "buttonReiniciar";
+            buttonReiniciar.Size = new Size(115, 35);
+            buttonReiniciar.TabIndex = 0;
+            buttonReiniciar.Text = "Reiniciar";
+            buttonReiniciar.UseVisualStyleBackColor = true;
+            buttonReiniciar.Click += buttonReiniciar_Click;
             // 
-            // trackBar1
+            // trackBarDiscos
             // 
-            trackBar1.Location = new Point(144, 12);
-            trackBar1.Maximum = 13;
-            trackBar1.Minimum = 2;
-            trackBar1.Name = "trackBar1";
-            trackBar1.Size = new Size(380, 45);
-            trackBar1.TabIndex = 1;
-            trackBar1.Value = 2;
+            trackBarDiscos.Location = new Point(144, 12);
+            trackBarDiscos.Maximum = 13;
+            trackBarDiscos.Minimum = 2;
+            trackBarDiscos.Name = "trackBarDiscos";
+            trackBarDiscos.Size = new Size(380, 45);
+            trackBarDiscos.TabIndex = 1;
+            trackBarDiscos.Value = 2;
+            trackBarDiscos.Scroll += trackBarDiscos_Scroll;
             // 
-            // label1
+            // labelCantidadDiscos
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial", 20.25F);
-            label1.Location = new Point(530, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(29, 32);
-            label1.TabIndex = 2;
-            label1.Text = "2";
+            labelCantidadDiscos.AutoSize = true;
+            labelCantidadDiscos.Font = new Font("Arial", 20.25F);
+            labelCantidadDiscos.Location = new Point(530, 15);
+            labelCantidadDiscos.Name = "labelCantidadDiscos";
+            labelCantidadDiscos.Size = new Size(29, 32);
+            labelCantidadDiscos.TabIndex = 2;
+            labelCantidadDiscos.Text = "2";
             // 
-            // label2
+            // labelMovimientos
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial", 20.25F, FontStyle.Bold);
-            label2.ForeColor = SystemColors.MenuHighlight;
-            label2.Location = new Point(678, 10);
-            label2.Name = "label2";
-            label2.Size = new Size(192, 32);
-            label2.TabIndex = 3;
-            label2.Text = "Movimientos:";
+            labelMovimientos.AutoSize = true;
+            labelMovimientos.Font = new Font("Arial", 20.25F, FontStyle.Bold);
+            labelMovimientos.ForeColor = SystemColors.MenuHighlight;
+            labelMovimientos.Location = new Point(678, 10);
+            labelMovimientos.Name = "labelMovimientos";
+            labelMovimientos.Size = new Size(215, 32);
+            labelMovimientos.TabIndex = 3;
+            labelMovimientos.Text = "Movimientos: 0";
             // 
-            // label3
+            // labelMejor
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Arial", 20.25F, FontStyle.Bold);
-            label3.ForeColor = SystemColors.Highlight;
-            label3.Location = new Point(678, 52);
-            label3.Name = "label3";
-            label3.Size = new Size(96, 32);
-            label3.TabIndex = 4;
-            label3.Text = "Mejor:";
+            labelMejor.AutoSize = true;
+            labelMejor.Font = new Font("Arial", 20.25F, FontStyle.Bold);
+            labelMejor.ForeColor = SystemColors.Highlight;
+            labelMejor.Location = new Point(678, 52);
+            labelMejor.Name = "labelMejor";
+            labelMejor.Size = new Size(119, 32);
+            labelMejor.TabIndex = 4;
+            labelMejor.Text = "Mejor: 3";
             // 
-            // groupBox1
+            // groupBoxTorre1
             // 
-            groupBox1.BackgroundImage = Properties.Resources.Recurso_1_2x;
-            groupBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            groupBox1.Location = new Point(12, 144);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(375, 500);
-            groupBox1.TabIndex = 5;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Torre 1";
+            groupBoxTorre1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBoxTorre1.BackgroundImage = Properties.Resources.Recurso_1_2x;
+            groupBoxTorre1.BackgroundImageLayout = ImageLayout.Stretch;
+            groupBoxTorre1.Location = new Point(12, 94);
+            groupBoxTorre1.Name = "groupBoxTorre1";
+            groupBoxTorre1.Size = new Size(375, 500);
+            groupBoxTorre1.TabIndex = 2;
+            groupBoxTorre1.TabStop = false;
+            groupBoxTorre1.Text = "Torre 1";
             // 
-            // groupBox2
+            // groupBoxTorre2
             // 
-            groupBox2.BackgroundImage = Properties.Resources.Recurso_1_2x;
-            groupBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            groupBox2.Location = new Point(393, 144);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(375, 500);
-            groupBox2.TabIndex = 6;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Torre 2";
+            groupBoxTorre2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBoxTorre2.BackgroundImage = Properties.Resources.Recurso_1_2x;
+            groupBoxTorre2.BackgroundImageLayout = ImageLayout.Stretch;
+            groupBoxTorre2.Location = new Point(393, 94);
+            groupBoxTorre2.Name = "groupBoxTorre2";
+            groupBoxTorre2.Size = new Size(375, 500);
+            groupBoxTorre2.TabIndex = 3;
+            groupBoxTorre2.TabStop = false;
+            groupBoxTorre2.Text = "Torre 2";
             // 
-            // groupBox3
+            // groupBoxTorre3
             // 
-            groupBox3.BackgroundImage = Properties.Resources.Recurso_1_2x;
-            groupBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            groupBox3.Location = new Point(774, 144);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(375, 500);
-            groupBox3.TabIndex = 6;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Torre 3";
+            groupBoxTorre3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBoxTorre3.BackgroundImage = Properties.Resources.Recurso_1_2x;
+            groupBoxTorre3.BackgroundImageLayout = ImageLayout.Stretch;
+            groupBoxTorre3.Location = new Point(774, 94);
+            groupBoxTorre3.Name = "groupBoxTorre3";
+            groupBoxTorre3.Size = new Size(375, 500);
+            groupBoxTorre3.TabIndex = 4;
+            groupBoxTorre3.TabStop = false;
+            groupBoxTorre3.Text = "Torre 3";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1162, 656);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(trackBar1);
-            Controls.Add(button1);
+            ClientSize = new Size(1161, 606);
+            Controls.Add(groupBoxTorre3);
+            Controls.Add(groupBoxTorre2);
+            Controls.Add(groupBoxTorre1);
+            Controls.Add(labelMejor);
+            Controls.Add(labelMovimientos);
+            Controls.Add(labelCantidadDiscos);
+            Controls.Add(trackBarDiscos);
+            Controls.Add(buttonReiniciar);
             Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
+            MinimumSize = new Size(1177, 645);
             Name = "Form1";
             Text = "Torres de Hanoi";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarDiscos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
-        private TrackBar trackBar1;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private GroupBox groupBox3;
+        private Button buttonReiniciar;
+        private TrackBar trackBarDiscos;
+        private Label labelCantidadDiscos;
+        private Label labelMovimientos;
+        private Label labelMejor;
+        private GroupBox groupBoxTorre1;
+        private GroupBox groupBoxTorre2;
+        private GroupBox groupBoxTorre3;
     }
 }
